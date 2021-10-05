@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FirstApp.Views.MyFirstApp">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Anoop has created a first mobile app"   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"></Label>
+
+            <Label Text="Name: "></Label><Entry Text="{Binding Name}"></Entry>
+            <Label Text="Address: "></Label><Editor Text="{Binding Address}"></Editor>
+
+
+            <Label Text="{Binding PersonalInformation}"   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"></Label>
+
+
+            <Button Text="Add" Command="{Binding ClickAddCommand}"></Button>
+            <Button Text="View" Command="{Binding ClickDisplayCommand}"></Button>
+            <Button Text="Clear" Command="{Binding ClickClearCommand}"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
