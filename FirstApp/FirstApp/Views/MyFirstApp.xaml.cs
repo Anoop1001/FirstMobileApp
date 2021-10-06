@@ -14,7 +14,7 @@ namespace FirstApp.Views
             //var container = new SimpleInjector.Container();
             //container.Options.ResolveUnregisteredConcreteTypes = true;
 
-            this.BindingContext = App.ApplicationStartup.ServiceProvider.GetService<FirstAppViewModel>();
+            this.BindingContext = App.ApplicationStartup.Container.GetInstance<FirstAppViewModel>();
         }
     }
 }

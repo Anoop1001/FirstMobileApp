@@ -1,7 +1,7 @@
 ﻿using FirstApp.Contract;
 using FirstApp.Data;
 using FirstApp.ViewModels;
-using Microsoft.Extensions.DependencyInjection;
+using SimpleInjector;
 using SQLite;
 using System;
 using System.IO;
@@ -10,18 +10,18 @@ namespace FirstApp
 {
     public class Startup
     {
-        public ServiceProvider ServiceProvider { get; }
+        public Container Container { get; }
 
         public Startup()
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Person_DB.db");
             var sqLiteConnection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create | SQLiteOpenFlags.FullMutex);
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddTransient<FirstAppViewModel>();
-            serviceCollection.AddSingleton<IDatabaseManager, DatabaseManager>();
-            serviceCollection.AddSingleton(sqLiteConnection);
+            Container = new Container();
+            Container.Register<FirstAppViewModel>();
+            Container.RegisterSingleton<IDatabaseManager, DatabaseManager>();
+            Container.RegisterInstance(sqLiteConnection);
 
-            ServiceProvider = serviceCollection.BuildServiceProvider();
+            Container.Verify();
         }
     }
 }
