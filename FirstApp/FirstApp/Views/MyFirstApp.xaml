@@ -10,7 +10,7 @@
             <Label Text="Anoop has created a first mobile app"   VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"></Label>
 
-            <Label Text="Name: "></Label><Entry Text="{Binding Name}"></Entry>
+            <Label Text="Name: "></Label><Entry Text="{Binding Name}" ></Entry>
             <Label Text="Address: "></Label><Editor Text="{Binding Address}"></Editor>
 
 
