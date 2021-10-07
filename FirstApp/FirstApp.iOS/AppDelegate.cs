@@ -23,6 +23,7 @@ namespace FirstApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            new Startup().Run();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
