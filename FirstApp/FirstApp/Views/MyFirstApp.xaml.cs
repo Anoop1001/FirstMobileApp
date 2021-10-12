@@ -16,5 +16,10 @@ namespace FirstApp.Views
 
             this.BindingContext = App.ContainerContext.GetInstance<FirstAppViewModel>();
         }
+
+        protected override void OnAppearing()
+        {
+            txtName.Focus();
+        }
     }
 }

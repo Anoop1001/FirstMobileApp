@@ -18,6 +18,7 @@ namespace FirstApp.ViewModels
             ClickClearCommand = new Command(ClearButtonClicked());
         }
 
+
         private Action<object> AddButtonClicked()
         {
             return async (e) =>
