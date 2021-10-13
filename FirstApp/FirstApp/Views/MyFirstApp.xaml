@@ -3,7 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FirstApp.Views.MyFirstApp"
              xmlns:behaviors="clr-namespace:FirstApp.Behaviors;assembly=FirstApp"
+             xmlns:local="clr-namespace:FirstApp.Effects;assembly=FirstApp"
 >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Green"></Setter>
+            </Style>
+        </ResourceDictionary> 
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
@@ -12,12 +20,26 @@
             <Label Text="Anoop has created a first mobile app"   VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"></Label>
 
-            <Label Text="Name: "></Label><Entry x:Name="txtName" Text="{Binding Name}" >
+            <Label Text="Name: "></Label>
+            <Entry x:Name="txtName" Text="{Binding Name}">
                 <Entry.Behaviors>
                     <behaviors:EntryBehavior />
                 </Entry.Behaviors>
+                <Entry.Effects>
+                    <local:EntryEffect />
+                </Entry.Effects>
             </Entry>
-            <Label Text="Address: "></Label><Editor Text="{Binding Address}"></Editor>
+
+            <Picker Title="Select a color" TitleColor="Black" ItemsSource="{Binding Colors}"  SelectedItem="{Binding DisplayColor}"
+                    ItemDisplayBinding="{Binding Name}" >
+                <!--<Picker.Behaviors>
+                    <behaviors:PickerBehavior>
+                    </behaviors:PickerBehavior>
+                </Picker.Behaviors>-->
+            </Picker>
+
+            <Label Text="Address: "></Label>
+            <Editor Text="{Binding Address}" TextColor="{Binding DisplayColor.Id}"></Editor>
 
 
             <Label Text="{Binding PersonalInformation}"   VerticalOptions="CenterAndExpand" 

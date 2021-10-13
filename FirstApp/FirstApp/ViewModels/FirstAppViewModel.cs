@@ -1,6 +1,8 @@
 ﻿using FirstApp.Contract;
 using FirstApp.Data.Models;
+using FirstApp.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -16,8 +18,32 @@ namespace FirstApp.ViewModels
             ClickAddCommand = new Command(AddButtonClicked());
             ClickDisplayCommand = new Command(DisplayButtonClicked());
             ClickClearCommand = new Command(ClearButtonClicked());
+            InitializeColorsFromSource();
         }
 
+        private void InitializeColorsFromSource()
+        {
+            Colors = new List<DisplayColor>
+        {
+            new DisplayColor { Name = "Aqua",  Id = Color.Aqua},
+            new DisplayColor { Name = "Blue",  Id = Color.Blue},
+            new DisplayColor { Name = "Gray",  Id = Color.Gray},
+            new DisplayColor { Name = "Lime",  Id = Color.Lime},
+            new DisplayColor { Name = "Navy",  Id = Color.Navy},
+            new DisplayColor { Name = "Purple",Id = Color.Purple},
+            new DisplayColor { Name = "Silver",Id = Color.Silver},
+            new DisplayColor { Name = "White", Id = Color.White},
+            new DisplayColor { Name ="Black",   Id = Color.Black},
+            new DisplayColor { Name ="Fuchsia", Id = Color.Fuchsia},
+            new DisplayColor { Name ="Green",   Id = Color.Green},
+            new DisplayColor { Name ="Maroon",  Id = Color.Maroon},
+            new DisplayColor { Name ="Olive",   Id = Color.Olive},
+            new DisplayColor { Name ="Red",     Id = Color.Red},
+            new DisplayColor { Name ="Teal",    Id = Color.Teal},
+            new DisplayColor { Name ="Yellow",  Id = Color.Yellow}
+        };
+
+        }
 
         private Action<object> AddButtonClicked()
         {
@@ -49,6 +75,7 @@ namespace FirstApp.ViewModels
         public ICommand ClickAddCommand { get; }
         public ICommand ClickDisplayCommand { get; }
         public ICommand ClickClearCommand { get; }
+        public ICommand GetColorValue { get; }
 
         string personalInformation = string.Empty;
         public string PersonalInformation
@@ -70,5 +97,13 @@ namespace FirstApp.ViewModels
             get { return address; }
             set { SetProperty(ref address, value); }
         }
+
+        List<DisplayColor> _colors = new List<DisplayColor>();
+
+        public List<DisplayColor> Colors { get { return _colors; } set { SetProperty(ref _colors, value); } }
+
+        private DisplayColor _displayColor;
+        public DisplayColor DisplayColor { get { return _displayColor; } set { SetProperty(ref _displayColor, value); } }
+
     }
 }
