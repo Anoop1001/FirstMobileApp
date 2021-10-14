@@ -12,27 +12,10 @@ namespace FirstApp.Droid.Effect
 {
     public class EntryEffect : PlatformEffect
     {
-        Android.Graphics.Color originalBackgroundColor = new Android.Graphics.Color(0, 0, 0, 0);
-        Android.Graphics.Color backgroundColor;
        
-
-        private static void OnEventNameChanged(BindableObject bindable, object oldValue, object newValue)
-        {
-            
-        }
-
         protected override void OnAttached()
         {
-            try
-            {
-                backgroundColor = originalBackgroundColor;
-                var obj = PickerBehavior.GetCommand(Element);
-                Control.SetBackgroundColor(backgroundColor);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Cannot set property on attached control. Error: ", ex.Message);
-            }
+            ApplyEffects();
         }
 
         protected override void OnDetached()
@@ -42,18 +25,17 @@ namespace FirstApp.Droid.Effect
         protected override void OnElementPropertyChanged(System.ComponentModel.PropertyChangedEventArgs args)
         {
             base.OnElementPropertyChanged(args);
+            ApplyEffects();
+        }
+
+        private void ApplyEffects()
+        {
             try
             {
-                if (args.PropertyName == "IsFocused")
+                var customEntry = Element as CustomControl.CustomEntry;
+                if (customEntry != null)
                 {
-                    if (((Android.Graphics.Drawables.ColorDrawable)Control.Background).Color == backgroundColor)
-                    {
-                        Control.SetBackgroundColor(originalBackgroundColor);
-                    }
-                    else
-                    {
-                        Control.SetBackgroundColor(backgroundColor);
-                    }
+                    Control.SetBackgroundColor(customEntry.BorderColor.ToAndroid());
                 }
             }
             catch (Exception ex)

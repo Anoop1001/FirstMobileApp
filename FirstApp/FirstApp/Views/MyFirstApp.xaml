@@ -4,6 +4,7 @@
              x:Class="FirstApp.Views.MyFirstApp"
              xmlns:behaviors="clr-namespace:FirstApp.Behaviors;assembly=FirstApp"
              xmlns:local="clr-namespace:FirstApp.Effects;assembly=FirstApp"
+             xmlns:custom="clr-namespace:FirstApp.CustomControl"
 >
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -25,9 +26,7 @@
                 <Entry.Behaviors>
                     <behaviors:EntryBehavior />
                 </Entry.Behaviors>
-                <Entry.Effects>
-                    <local:EntryEffect />
-                </Entry.Effects>
+               
             </Entry>
 
             <Picker Title="Select a color" TitleColor="Black" ItemsSource="{Binding Colors}"  SelectedItem="{Binding DisplayColor}"
@@ -39,7 +38,11 @@
             </Picker>
 
             <Label Text="Address: "></Label>
-            <Editor Text="{Binding Address}" TextColor="{Binding DisplayColor.Id}"></Editor>
+            <custom:CustomEntry Text="{Binding Address}"  BorderColor="{Binding DisplayColor.Id}" >
+                <Entry.Effects>
+                    <local:EntryEffect />
+                </Entry.Effects>
+            </custom:CustomEntry>
 
 
             <Label Text="{Binding PersonalInformation}"   VerticalOptions="CenterAndExpand" 

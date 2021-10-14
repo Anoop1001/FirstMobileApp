@@ -19,7 +19,6 @@ namespace FirstApp.Views
 
         protected override void OnAppearing()
         {
-            txtName.Focus();
         }
     }
 }
