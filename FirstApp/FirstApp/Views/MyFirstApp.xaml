@@ -26,7 +26,13 @@
                 <Entry.Behaviors>
                     <behaviors:EntryBehavior />
                 </Entry.Behaviors>
-               
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry"
+                 Property="IsFocused" Value="True">
+                        <Setter Property="BackgroundColor" Value="Green" />
+                        <!-- multiple Setters elements are allowed -->
+                    </Trigger>
+                </Entry.Triggers>
             </Entry>
 
             <Picker Title="Select a color" TitleColor="Black" ItemsSource="{Binding Colors}"  SelectedItem="{Binding DisplayColor}"
@@ -39,9 +45,9 @@
 
             <Label Text="Address: "></Label>
             <custom:CustomEntry Text="{Binding Address}"  BorderColor="{Binding DisplayColor.Id}" >
-                <Entry.Effects>
+                <!--<Entry.Effects>
                     <local:EntryEffect />
-                </Entry.Effects>
+                </Entry.Effects>-->
             </custom:CustomEntry>
 
 
