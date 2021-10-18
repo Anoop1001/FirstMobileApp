@@ -56,6 +56,8 @@
 
             <Label Text="{Binding PersonalInformation}"   VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"></Label>
+            <Button Text="Visible"
+                IsVisible="{Binding Name, Converter={StaticResource boolConverter}}"/>
             <Button Text="Add" Command="{Binding ClickAddCommand}"></Button>
             <Button Text="View" Command="{Binding ClickDisplayCommand}"></Button>
             <Button Text="Clear" Command="{Binding ClickClearCommand}"></Button>
