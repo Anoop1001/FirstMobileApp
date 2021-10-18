@@ -1,6 +1,7 @@
 ﻿using FirstApp.Contract;
 using FirstApp.Data.Models;
 using FirstApp.Models;
+using FirstApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace FirstApp.ViewModels
             ClickAddCommand = new Command(AddButtonClicked());
             ClickDisplayCommand = new Command(DisplayButtonClicked());
             ClickClearCommand = new Command(ClearButtonClicked());
+            ClickNextCommand = new Command(NextPageNavigation());
             InitializeColorsFromSource();
         }
 
@@ -72,10 +74,20 @@ namespace FirstApp.ViewModels
             };
         }
 
+        private Action<object> NextPageNavigation()
+        {
+            return async (e) =>
+            {
+                await App.Current.MainPage.Navigation.PushModalAsync(new SecondPage());
+               //NavigationService.NavigateTo(vm);
+            };
+        }
+
         public ICommand ClickAddCommand { get; }
         public ICommand ClickDisplayCommand { get; }
         public ICommand ClickClearCommand { get; }
         public ICommand GetColorValue { get; }
+        public ICommand ClickNextCommand { get; }
 
         string personalInformation = string.Empty;
         public string PersonalInformation

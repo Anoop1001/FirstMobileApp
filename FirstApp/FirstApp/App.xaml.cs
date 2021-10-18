@@ -12,7 +12,8 @@ namespace FirstApp
             InitializeComponent();
 
             ContainerContext = Startup.Run();
-            MainPage = new MyFirstApp();
+            //MainPage = new MyFirstApp();
+            MainPage = new NavigationPage(new MyFirstApp());
         }
 
         protected override void OnStart()
