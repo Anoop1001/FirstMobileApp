@@ -98,6 +98,12 @@ namespace FirstApp.ViewModels
             set { SetProperty(ref address, value); }
         }
 
+        public bool NameEntered
+        {
+            get { return string.IsNullOrEmpty(Name); }
+            set { }
+        }
+
         List<DisplayColor> _colors = new List<DisplayColor>();
 
         public List<DisplayColor> Colors { get { return _colors; } set { SetProperty(ref _colors, value); } }

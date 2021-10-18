@@ -4,6 +4,7 @@
              x:Class="FirstApp.Views.MyFirstApp"
              xmlns:behaviors="clr-namespace:FirstApp.Behaviors;assembly=FirstApp"
              xmlns:local="clr-namespace:FirstApp.Effects;assembly=FirstApp"
+              xmlns:converter="clr-namespace:FirstApp.Converters"
              xmlns:custom="clr-namespace:FirstApp.CustomControl"
 >
     <ContentPage.Resources>
@@ -11,6 +12,8 @@
             <Style TargetType="Entry">
                 <Setter Property="TextColor" Value="Green"></Setter>
             </Style>
+            <converter:BooleanConverter x:Key="boolConverter" />
+
         </ResourceDictionary> 
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -53,8 +56,6 @@
 
             <Label Text="{Binding PersonalInformation}"   VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"></Label>
-
-
             <Button Text="Add" Command="{Binding ClickAddCommand}"></Button>
             <Button Text="View" Command="{Binding ClickDisplayCommand}"></Button>
             <Button Text="Clear" Command="{Binding ClickClearCommand}"></Button>
