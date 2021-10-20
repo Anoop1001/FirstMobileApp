@@ -1,7 +1,4 @@
-﻿using FirstApp.ViewModels;
-using FirstApp.Views;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using Xamarin.Forms;
 
 namespace FirstApp

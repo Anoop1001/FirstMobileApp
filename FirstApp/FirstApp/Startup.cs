@@ -16,6 +16,7 @@ namespace FirstApp
         public static Container Run()
         {
             Container.Register<FirstAppViewModel>();
+            Container.Register<SecondPageViewModel>();
             Container.RegisterSingleton<IDatabaseManager, DatabaseManager>();
             Container.Verify();
             return Container;

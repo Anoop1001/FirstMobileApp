@@ -1,4 +1,5 @@
 ﻿
+using FirstApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,6 +11,7 @@ namespace FirstApp.Views
         public SecondPage()
         {
             InitializeComponent();
+            this.BindingContext = App.ContainerContext.GetInstance<SecondPageViewModel>();
         }
     }
 }

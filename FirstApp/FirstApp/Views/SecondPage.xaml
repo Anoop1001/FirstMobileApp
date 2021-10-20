@@ -3,10 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FirstApp.Views.SecondPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Second Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <CollectionView ItemsSource="{Binding PersonalInformation}"  >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate >
+                        <Grid Padding="10" Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" FontAttributes="Bold"  />
+                            <Label Text="{Binding Address}" Grid.Column="1"  />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
